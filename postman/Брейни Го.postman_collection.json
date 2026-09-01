@@ -1,0 +1,514 @@
+{
+  "info": {
+    "_postman_id": "eb539c8f-6b85-4e5e-8650-3d1a4896e7eb",
+    "name": "Брейни Го",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56658119",
+    "_collection_link": "https://go.postman.co/collection/56658119-eb539c8f-6b85-4e5e-8650-3d1a4896e7eb?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Управление пользователями, включая создание, получение и удаление пользователей.",
+      "item": [
+        {
+          "name": "Получить пользователя по ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/go/get_user/3982",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "get_user",
+                "3982"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить всех пользователей",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const requestOptions = {\r",
+                  "  method: \"GET\",\r",
+                  "  headers: myHeaders,\r",
+                  "  redirect: \"follow\"\r",
+                  "};"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const requestOptions = {\r",
+                  "  method: \"GET\",\r",
+                  "  headers: myHeaders,\r",
+                  "  redirect: \"follow\"\r",
+                  "};"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}go/get_users",
+              "host": [
+                "{{URL}}go"
+              ],
+              "path": [
+                "get_users"
+              ],
+              "query": [
+                {
+                  "key": " role",
+                  "value": "owner",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "name",
+                  "value": "Брейни",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Создать нового пользователя",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"ivanpnah@brainy.run\",\r\n  \"name\": \"Иван\",\r\n  \"password\": \"superpassword\",\r\n  \"role\": \"owner\",\r\n  \"username\": \"ivanpnah\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/create_user",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "create_user"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Корпорация",
+      "item": [
+        {
+          "name": "Создание корпорации",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{student_pasword}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{student_login}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"description\": \"Корпорация «Сыны Таверны» — это межгалактический байкерский клуб и частная космическая транспортная компания, где звездные дальнобойщики рассекают по космосу на ракетных чопперах, а споры решают забиванием карт таверны.\",\r\n  \"logo_url\": \"https://cdn.7days.ru/pic/929/964305/1336538/76.jpg\",\r\n  \"name\": \"Sons of hearthstone\",\r\n  \"owner_id\": 3982\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/create_corporation",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "create_corporation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Показать все корпорации",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{student_pasword}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{student_login}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"description\": \"Ешь свои фрукты, Спортакус. Мы уже победили!\",\r\n  \"logo_url\": \"https://s3.ru1.storage.beget.cloud/bb4e0f3f0f81-brainy-platform/API%2FGO%2Frobbie.jpg\",\r\n  \"owner_id\": 310\r\n}"
+            },
+            "url": {
+              "raw": "{{URL}}/go//get_corporations",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "",
+                "get_corporations"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Корабли",
+      "item": [
+        {
+          "name": "Создание корабля",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{student_pasword}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{student_login}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"corporation_id\": 5267,\r\n  \"custom_photo_url\": \"https://media.myshows.me/episodes/normal/5/db/5dba436effb493b4cf7a6feeeea0b71d.jpg\",\r\n  \"description\": \"ШЕСТОЙ элемент\",\r\n  \"name\": \"формат\",\r\n  \"type_id\": 6\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/add_ship",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "add_ship"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Показать все типы кораблей",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "{{student_pasword}}",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "{{student_login}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"description\": \"Ешь свои фрукты, Спортакус. Мы уже победили!\",\r\n  \"logo_url\": \"https://s3.ru1.storage.beget.cloud/bb4e0f3f0f81-brainy-platform/API%2FGO%2Frobbie.jpg\",\r\n  \"owner_id\": 310\r\n}"
+            },
+            "url": {
+              "raw": "{{URL}}/go/get_ship_types",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "get_ship_types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Маршруты",
+      "item": [
+        {
+          "name": "Создать новый маршрут ",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"distance\": 15000,\r\n  \"from_id\": 1,\r\n  \"to_id\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/create_route",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "create_route"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получить все маршруты",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Рейсы",
+      "item": [
+        {
+          "name": "Добавить новый рейс ",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"date\": \"2026-12-25\",\r\n  \"route_id\": 2596,\r\n  \"ship_id\": 1108\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/add_trip",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "add_trip"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Рейсы корпорации ",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/go/get_trips/5267",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "go",
+                "get_trips",
+                "5267"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "{{URL}}go/add_trip",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date\": \"2444-12-25\",\r\n  \"route_id\": 2595,\r\n  \"ship_id\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}go/add_trip",
+              "host": [
+                "{{URL}}go"
+              ],
+              "path": [
+                "add_trip"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Изменить стоимость",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "https://cdn.7days.ru/pic/929/964305/1336538/76.jpg",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://cdn.7days.ru/pic/929/964305/1336538/76.jpg",
+          "protocol": "https",
+          "host": [
+            "cdn",
+            "7days",
+            "ru"
+          ],
+          "path": [
+            "pic",
+            "929",
+            "964305",
+            "1336538",
+            "76.jpg"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{vault:password}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{student_login}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_password_0q3m",
+      "secret": true
+    }
+  ]
+}
